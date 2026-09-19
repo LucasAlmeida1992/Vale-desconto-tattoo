@@ -353,15 +353,15 @@ body {
     line-height: 1.1;
     opacity: 0.85;
 }
-/* Preenchimento máximo para telas de celular */
 @media (max-width: 480px) {
 
     .prize-content {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-between !important; /* Distribui topo, centro e base */
+        justify-content: center !important; /* Centraliza os itens na vertical */
         align-items: center !important;
-        padding: 6px 8px !important; /* Reduz margens para ganhar espaço útil */
+        gap: 4px !important; /* Ajuste este valor para controlar a distância (ex: 2px, 4px, 6px) */
+        padding: 6px 8px !important;
         height: 100% !important;
         width: 100% !important;
         box-sizing: border-box !important;
@@ -373,12 +373,12 @@ body {
         font-size: clamp(1.2rem, 5vw, 1.5rem) !important;
         line-height: 1 !important;
         margin: 0 !important;
-        font-weight: 700 !important;
+        font-weight: 800 !important;
     }
 
     /* Valor do Desconto ("R$ XX DE DESCONTO") */
     .prize-value {
-        font-size: clamp(1.8rem, 8vw, 2.4rem) !important; /* Destaque principal bem grande */
+        font-size: clamp(1.8rem, 8vw, 2.4rem) !important;
         line-height: 1 !important;
         font-weight: 900 !important;
         margin: 0 !important;
@@ -391,6 +391,6 @@ body {
         line-height: 1.15 !important;
         margin: 0 !important;
         width: 100% !important;
-        font-weight: 600 !important;
+        font-weight: 650 !important;
     }
 }

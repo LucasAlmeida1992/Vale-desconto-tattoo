@@ -235,21 +235,40 @@ canvas.addEventListener('touchend', () => { isDrawing = false; stopSound(); last
 canvas.addEventListener('touchcancel', () => { isDrawing = false; stopSound(); lastPosition = null; isResizingAllowed = true; });
 
 // =============================
-// PARAMS DA URL (Cálculo do Desconto pelo Valor Total e Gênero)
+// PARAMS DA URL E TRAVA DE ACESSO
 // =============================
 const urlParams = new URLSearchParams(window.location.search);
 const valorParam = urlParams.get('valor');
 const genero = urlParams.get('genero');
 
-// 'valorParam' agora representa o valor TOTAL do orçamento da tattoo (ex: ?valor=500)
-// Se não for informado na URL, o padrão assumido será R$ 500
-const valorTattoo = valorParam ? parseFloat(valorParam) : 500;
+// SE NÃO HOUVER O PARÂMETRO "VALOR" NA URL, BLOQUEIA A TELA
+if (!valorParam) {
+    document.body.innerHTML = `
+        <div style="
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            background: #111; 
+            color: #fff; 
+            font-family: sans-serif; 
+            text-align: center; 
+            padding: 20px;
+        ">
+            <h2 style="color: #e74c3c;">Link Inválido ou Expirado</h2>
+            <p style="color: #aaa; max-width: 400px;">
+                Este vale-desconto é exclusivo e só pode ser acessado através de um link de orçamento personalizado enviado no WhatsApp.
+            </p>
+        </div>
+    `;
+    throw new Error("Acesso negado: parâmetro 'valor' ausente.");
+}
 
-// Regra do desconto: 10% do valor total da tattoo (altere 0.10 para 0.15 se quiser 15%)
+// Se o parâmetro existir, prossegue com os cálculos
+const valorTattoo = parseFloat(valorParam);
 const percentualDesconto = 0.10;
 const valorDesconto = Math.round(valorTattoo * percentualDesconto);
-
-// O valor mínimo da regra passa a ser o próprio orçamento da tattoo
 const valorMinimo = valorTattoo;
 
 // Atualiza o texto do prêmio dentro da raspadinha
