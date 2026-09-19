@@ -235,25 +235,30 @@ canvas.addEventListener('touchend', () => { isDrawing = false; stopSound(); last
 canvas.addEventListener('touchcancel', () => { isDrawing = false; stopSound(); lastPosition = null; isResizingAllowed = true; });
 
 // =============================
-// PARAMS DA URL (Ajuste dos 10% e Gênero)
+// PARAMS DA URL (Cálculo do Desconto pelo Valor Total e Gênero)
 // =============================
 const urlParams = new URLSearchParams(window.location.search);
 const valorParam = urlParams.get('valor');
 const genero = urlParams.get('genero');
 
-// Define R$ 50 como valor padrão caso não passe nada na URL
-const valorDesconto = valorParam ? parseFloat(valorParam) : 50;
+// 'valorParam' agora representa o valor TOTAL do orçamento da tattoo (ex: ?valor=500)
+// Se não for informado na URL, o padrão assumido será R$ 500
+const valorTattoo = valorParam ? parseFloat(valorParam) : 500;
 
-// O valor mínimo do projeto é equivalente a 10x o desconto (regra dos 10%)
-const valorMinimo = valorDesconto * 10;
+// Regra do desconto: 10% do valor total da tattoo (altere 0.10 para 0.15 se quiser 15%)
+const percentualDesconto = 0.10;
+const valorDesconto = Math.round(valorTattoo * percentualDesconto);
 
-// Atualiza o texto da raspadinha com o desconto
+// O valor mínimo da regra passa a ser o próprio orçamento da tattoo
+const valorMinimo = valorTattoo;
+
+// Atualiza o texto do prêmio dentro da raspadinha
 const valorPremioElement = document.getElementById('valor-premio');
 if (valorPremioElement) {
     valorPremioElement.textContent = `(R$ ${valorDesconto} DE DESCONTO)`;
 }
 
-// Atualiza o valor mínimo dinamicamente na legenda
+// Atualiza a legenda com o valor mínimo do projeto
 const valorMinimoElement = document.getElementById('valor-minimo');
 if (valorMinimoElement) {
     valorMinimoElement.textContent = `R$ ${valorMinimo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
