@@ -1,375 +1,750 @@
 /*
+
  * =========================================
- * FONTES E ESTILOS GLOBAIS (Fontes do Sistema)
+
+ * FONTES E ESTILOS GLOBAIS
+
  * =========================================
+
 */
+
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-    background-image: url('fundo-mobile.webp');
-    background-size: cover; 
+
+    font-family: 'Roboto', sans-serif;
+
+    background-image: url('fundo-mobile.webp'); /* Imagem leve padrao para celular */
+
+    background-size: cover;
+
     background-position: center center;
+
     background-repeat: no-repeat;
+
     background-attachment: fixed;
+
     color: #333;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     min-height: 100vh;
+
     padding: 20px;
+
     box-sizing: border-box;
+
 }
+
+
 
 /* Imagem em alta resolucao para telas maiores */
+
 @media (min-width: 769px) {
+
     body {
+
         background-image: url('fundo-desktop.webp');
+
     }
+
 }
 
+
+
 /*
+
  * =========================================
+
  * CARTÃO (VALE-RASPADINHA) - ESTILOS BASE
+
  * =========================================
+
 */
+
 .vale-container {
-    background-color: #f7f3e9; 
+
+    background-color: #f7f3e9;
+
     border: 2px dashed #c0b298;
+
     border-radius: 15px;
+
     padding: 25px;
-    max-width: 500px; 
+
+    max-width: 500px;
+
     width: 100%;
+
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); 
-    
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+
+   
+
     /* textura sutil */
-    background-image: 
+
+    background-image:
+
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+
     background-size: auto;
+
     background-position: center;
+
     background-repeat: repeat;
+
 }
 
+
+
 /*
+
  * =========================================
+
  * TEXTOS DO CARTÃO
+
  * =========================================
+
 */
+
 .vale-container h1 {
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+
+    font-family: 'Oswald', sans-serif;
+
     color: #3f3020;
+
     font-size: 2.2rem;
+
     line-height: 1.2;
+
     margin-top: 0;
+
     margin-bottom: 15px;
+
 }
+
+
 
 .vale-container .subtitle {
-    font-size: 1.1rem; 
+
+    font-size: 1.1rem;
+
     color: #5c4a32;
+
     margin-bottom: 25px;
+
     line-height: 1.4;
+
 }
+
+
 
 .vale-container .regras-validez {
+
     display: block;
+
     margin-top: 6px;
+
     font-size: 0.95rem;
+
     color: #7a6345;
+
 }
+
+
 
 .vale-container .regras-validez strong {
+
     color: #3f3020;
+
     font-weight: 700;
+
 }
 
+
+
 /*
+
  * =========================================
+
  * BOTÃO E ÁREA DO WHATSAPP
+
  * =========================================
+
 */
+
 .vale-container .link-info {
-    font-size: 1.0rem; 
+
+    font-size: 1.0rem;
+
     margin-top: 25px;
+
     line-height: 1.4;
+
     color: #5c4a32;
+
 }
+
+
 
 .vale-container .link-info p {
+
     margin-bottom: 12px;
+
 }
+
+
 
 .btn-whatsapp {
+
     display: inline-block;
+
     background-color: #25D366;
+
     color: #ffffff !important;
+
     font-weight: 700;
+
     text-decoration: none;
+
     padding: 12px 24px;
+
     border-radius: 25px;
+
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
     transition: all 0.2s ease;
+
     font-size: 1.05rem;
+
 }
+
+
 
 .btn-whatsapp:hover {
+
     background-color: #1ebc57;
+
     transform: translateY(-2px);
+
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+
 }
 
+
+
 /*
+
  * =========================================
+
  * ÁREA DA RASPADINHA
+
  * =========================================
+
 */
+
 .scratch-wrapper {
+
     position: relative;
+
     width: 100%;
-    padding-top: 33.33%; 
+
+    padding-top: 33.33%;
+
     border-radius: 10px;
+
     overflow: hidden;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.1); 
+
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+
 }
+
+
 
 .prize-content {
+
     position: absolute;
+
     top: 0;
+
     left: 0;
+
     width: 100%;
+
     height: 100%;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 4px;
+
     background-color: #fffaf0;
+
     border: 2px solid #e6d5b8;
+
     padding: 10px;
+
     box-sizing: border-box;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+
+    font-family: 'Oswald', sans-serif;
+
     color: #3f3020;
+
     text-align: center;
-    visibility: hidden; 
+
+    visibility: hidden;
+
 }
+
+
 
 .prize-title {
+
     font-size: 1.1rem;
+
     font-weight: bold;
+
     margin: 0;
+
     line-height: 1.2;
+
 }
+
+
 
 .prize-value {
+
     font-size: 1.6rem;
+
     font-weight: 700;
+
     color: #d9534f;
+
     margin: 0;
+
     line-height: 1.1;
+
 }
+
+
 
 .regras-validez {
+
     font-size: 0.8rem;
+
     margin-top: 2px;
+
     line-height: 1.1;
+
     opacity: 0.85;
+
 }
+
+
 
 #scratch-canvas {
+
     position: absolute;
+
     top: 0;
+
     left: 0;
+
     width: 100%;
+
     height: 100%;
-    cursor: pointer; 
+
+    cursor: pointer;
+
 }
+
+
 
 #scratch-canvas:active {
+
     cursor: grabbing;
+
 }
 
+
+
 /*
+
  * =========================================
+
  * CAIXA DE PRESENTE
+
  * =========================================
+
 */
+
 .gift-box {
+
     position: fixed;
+
     inset: 0;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #b32400), color-stop(100%, #751a00)); 
+
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #b32400), color-stop(100%, #751a00));
+
     background: -webkit-linear-gradient(145deg, #b32400, #751a00);
+
     background: -moz-linear-gradient(145deg, #b32400, #751a00);
-    background: linear-gradient(145deg, #b32400, #751a00); 
-    
+
+    background: linear-gradient(145deg, #b32400, #751a00);
+
+   
+
     z-index: 9999;
+
     overflow: hidden;
-    transition: opacity 1s ease-out; 
+
+    transition: opacity 1s ease-out;
+
     pointer-events: auto;
+
     box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6);
+
 }
+
+
 
 .gift-box::before {
+
     content: "";
+
     position: absolute;
+
     inset: 0;
+
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+
     opacity: 0.25;
+
     z-index: 0;
+
 }
+
+
 
 /* FAIXAS (FITAS) */
+
 .gift-ribbon-left,
+
 .gift-ribbon-center {
+
     position: absolute;
+
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a30000), color-stop(50%, #ff3c3c), color-stop(100%, #a30000));
+
     background: -webkit-linear-gradient(to bottom, #a30000, #ff3c3c, #a30000);
+
     background: -moz-linear-gradient(to bottom, #a30000, #ff3c3c, #a30000);
-    background: linear-gradient(to bottom, #a30000, #ff3c3c, #a30000); 
+
+    background: linear-gradient(to bottom, #a30000, #ff3c3c, #a30000);
+
+
 
     box-shadow:
+
         inset 0 0 15px rgba(255,255,255,0.4),
+
         inset 0 0 30px rgba(0,0,0,0.4),
+
         0 0 20px rgba(0,0,0,0.6);
-    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; 
+
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+
 }
+
+
 
 .gift-ribbon-left {
+
     top: 0;
+
     left: 50%;
+
     transform: translateX(-50%);
+
     height: 100%;
+
     width: 12vw;
+
     z-index: 10001;
+
 }
+
+
 
 .gift-ribbon-center {
+
     top: 50%;
+
     left: 0;
-    transform: translateY(-50%); 
+
+    transform: translateY(-50%);
+
     width: 100%;
+
     height: 12vw;
+
     z-index: 10002;
-    display: flex; 
+
+    display: flex;
+
     justify-content: center;
+
     align-items: center;
+
 }
+
+
 
 .gift-box-message {
+
     position: absolute;
-    top: 45%; 
+
+    top: 45%;
+
     left: 50%;
-    transform: translate(-50%, -50%); 
-    
+
+    transform: translate(-50%, -50%);
+
+   
+
     color: #fffaf0;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+
+    font-family: 'Oswald', sans-serif;
+
     font-size: 2.4em;
+
     text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+
     z-index: 10004;
+
     pointer-events: none;
-    
-    padding: 0.4em 1em; 
+
+   
+
+    padding: 0.4em 1em;
+
     background: rgba(0, 0, 0, 0.25);
-    line-height: 1; 
-    
+
+    line-height: 1;
+
+   
+
     border-radius: 8px;
+
     animation: pulseText 1.5s infinite alternate;
+
     text-align: center;
+
 }
 
+
+
 /*
+
  * =========================================
+
  * ANIMAÇÕES
+
  * =========================================
+
 */
+
 @keyframes pulseText {
+
     0% { opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.4); }
+
     100% { opacity: 0.7; text-shadow: 0 0 14px rgba(255,255,255,0.9); }
+
 }
+
+
 
 .gift-box.opened .gift-ribbon-left {
+
     transform: translateX(-50%) rotate(12deg) scaleY(0.6);
+
     opacity: 0;
+
 }
+
 .gift-box.opened .gift-ribbon-center {
+
     transform: translateY(-50%) rotate(-12deg) scaleX(0.6);
+
     opacity: 0;
+
 }
-.gift-box.opened .gift-box-message { 
+
+.gift-box.opened .gift-box-message {
+
     opacity: 0;
-    transition: opacity 0s ease-out; 
+
+    transition: opacity 0s ease-out;
+
 }
+
 .gift-box.opened {
+
     opacity: 0;
+
     pointer-events: none;
+
 }
+
+
 
 /*
+
  * =========================================
+
  * RESPONSIVO
+
  * =========================================
+
 */
+
 @media (max-width: 600px) {
-    .gift-box-message { 
-        font-size: 1.8em; 
-        white-space: nowrap; 
-        top: 46%; 
+
+    .gift-box-message {
+
+        font-size: 1.8em;
+
+        white-space: nowrap;
+
+        top: 46%;
+
     }
-    
+
+   
+
     .gift-ribbon-left { width: 20vw; }
+
     .gift-ribbon-center { height: 20vw; }
+
 }
+
+
 
 @media (max-width: 450px) {
+
     .vale-container h1 {
+
         font-size: 1.8rem;
+
     }
 
+
+
     .scratch-wrapper {
-        padding-top: 50%; 
+
+        padding-top: 50%;
+
     }
+
 }
+
+
 
 @media (max-width: 480px) {
 
+
+
     .prize-content {
+
         display: flex !important;
+
         flex-direction: column !important;
+
         justify-content: center !important;
+
         align-items: center !important;
+
         gap: 4px !important;
+
         padding: 6px 4px !important;
+
         height: 100% !important;
+
         width: 100% !important;
+
         box-sizing: border-box !important;
+
         text-align: center !important;
+
     }
+
+
 
     /* Título ("Parabéns!") */
+
     .prize-title {
+
         font-size: clamp(1.1rem, 4.5vw, 1.4rem) !important;
+
         line-height: 1 !important;
+
         margin: 0 !important;
+
         font-weight: 800 !important;
+
     }
+
+
 
     /* Valor do Desconto ("(R$ XX DE DESCONTO)") */
+
     .prize-value {
+
         font-size: clamp(1.2rem, 5.8vw, 1.7rem) !important;
+
         letter-spacing: -0.5px !important;
+
         line-height: 1 !important;
+
         font-weight: 900 !important;
+
         margin: 0 !important;
+
         white-space: nowrap !important;
+
     }
 
+
+
     /* Regra de Validade */
+
     .regras-validez {
+
         font-size: clamp(0.8rem, 3.2vw, 0.95rem) !important;
+
         line-height: 1.15 !important;
+
         margin: 0 !important;
+
         width: 100% !important;
+
         font-weight: 650 !important;
+
     }
-}
+
+} 
+
