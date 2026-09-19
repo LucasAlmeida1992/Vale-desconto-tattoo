@@ -353,41 +353,44 @@ body {
     line-height: 1.1;
     opacity: 0.85;
 }
-/* Regras para telas menores (Celulares) */
-
+/* Preenchimento máximo para telas de celular */
 @media (max-width: 480px) {
 
     .prize-content {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important;
+        justify-content: space-between !important; /* Distribui topo, centro e base */
         align-items: center !important;
-        padding: 8px 12px !important;
-        gap: 3px !important;
+        padding: 6px 8px !important; /* Reduz margens para ganhar espaço útil */
         height: 100% !important;
+        width: 100% !important;
         box-sizing: border-box !important;
+        text-align: center !important;
     }
 
     /* Título ("Parabéns!") */
     .prize-title {
-        font-size: 1.15rem !important;
-        line-height: 1.1 !important;
+        font-size: clamp(1.2rem, 5vw, 1.5rem) !important;
+        line-height: 1 !important;
         margin: 0 !important;
+        font-weight: 700 !important;
     }
 
-    /* Valor principal ("R$ XX DE DESCONTO") */
+    /* Valor do Desconto ("R$ XX DE DESCONTO") */
     .prize-value {
-        font-size: 1.65rem !important; /* Aumentado para destacar e ocupar o centro */
-        line-height: 1.05 !important;
-        font-weight: 800 !important;
-        margin: 2px 0 !important;
+        font-size: clamp(1.8rem, 8vw, 2.4rem) !important; /* Destaque principal bem grande */
+        line-height: 1 !important;
+        font-weight: 900 !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
     }
 
-    /* Regra ("(Válido para empenho mínimo de...)") */
+    /* Regra de Validade */
     .regras-validez {
-        font-size: 0.78rem !important;
+        font-size: clamp(0.85rem, 3.5vw, 1.05rem) !important;
         line-height: 1.15 !important;
         margin: 0 !important;
-        width: 95% !important; /* Ocupa quase toda a largura para não quebrar muitas linhas */
+        width: 100% !important;
+        font-weight: 600 !important;
     }
 }
