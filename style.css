@@ -353,3 +353,29 @@ body {
     line-height: 1.1;
     opacity: 0.85;
 }
+/* Regras para telas menores (Celulares) */
+@media (max-width: 480px) {
+
+    /* Reduz o espaçamento interno e a distância entre as linhas */
+    .prize-content {
+        gap: 2px; /* Reduz a distância de 4px para 2px */
+        padding: 5px; /* Reduz o padding interno */
+    }
+
+    /* Diminui o título "Parabéns!" */
+    .prize-title {
+        font-size: 0.95rem !important; /* Tamanho menor forçado */
+    }
+
+    /* Diminui o valor do desconto "(R$ 50 DE DESCONTO)" */
+    .prize-value {
+        font-size: 1.25rem !important; /* Valor menor para não vazar */
+    }
+
+    /* Diminui drasticamente a regra de validade "(Válido para...)" */
+    .regras-validez {
+        font-size: 0.65rem !important; /* Texto bem pequeno */
+        margin-top: 1px; /* Cola ainda mais no valor acima */
+        opacity: 0.8; /* Leve transparência para discrição */
+    }
+}
