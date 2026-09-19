@@ -63,7 +63,7 @@ function getTouchPos(e) {
     const rect = canvas.getBoundingClientRect();
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
-    return { x: (e.touches[0].clientX - rect.left) * scaleX, y: (e.touches[0].clientY - rect.top) * scaleY };
+    return { x: (e.touches[0].clientX - rect.left) * scaleX, y: (e.touches[0].top - rect.top) * scaleY };
 }
 
 // =============================
@@ -265,22 +265,35 @@ if (!valorParam) {
     throw new Error("Acesso negado: parâmetro 'valor' ausente.");
 }
 
-// Se o parâmetro existir, prossegue com os cálculos
-const valorTattoo = parseFloat(valorParam);
-const percentualDesconto = 0.10;
-const valorDesconto = Math.round(valorTattoo * percentualDesconto);
-const valorMinimo = valorTattoo;
-
-// Atualiza o texto do prêmio dentro da raspadinha
 const valorPremioElement = document.getElementById('valor-premio');
-if (valorPremioElement) {
-    valorPremioElement.textContent = `(R$ ${valorDesconto} DE DESCONTO)`;
-}
-
-// Atualiza a legenda com o valor mínimo do projeto
 const valorMinimoElement = document.getElementById('valor-minimo');
-if (valorMinimoElement) {
-    valorMinimoElement.textContent = `R$ ${valorMinimo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+const elementosRegras = document.querySelectorAll('.regras-validez');
+
+// SE FOR PORCENTAGEM (Ex: valor=10% ou valor=15%)
+if (valorParam.includes('%')) {
+    if (valorPremioElement) {
+        valorPremioElement.textContent = `(${valorParam} DE DESCONTO)`;
+    }
+    // Oculta as regras de valor mínimo quando for porcentagem
+    elementosRegras.forEach(el => el.style.display = 'none');
+} 
+// SE FOR VALOR EM REAIS (Ex: valor=500)
+else {
+    const valorTattoo = parseFloat(valorParam);
+    const percentualDesconto = 0.08; // Alterado para 8%
+    const valorDesconto = Math.round(valorTattoo * percentualDesconto);
+    const valorMinimo = valorTattoo;
+
+    if (valorPremioElement) {
+        valorPremioElement.textContent = `(R$ ${valorDesconto} DE DESCONTO)`;
+    }
+
+    if (valorMinimoElement) {
+        valorMinimoElement.textContent = `R$ ${valorMinimo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+    }
+
+    // Garante que a frase de regra continuará visível
+    elementosRegras.forEach(el => el.style.display = 'block');
 }
 
 // Ajuste do título de acordo com gênero
