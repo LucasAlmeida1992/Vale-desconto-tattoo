@@ -5,7 +5,7 @@
 */
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('imagemfundoold.png');
+    background-image: url('fundo-mobile.webp'); /* Imagem leve padrao para celular */
     background-size: cover; 
     background-position: center center;
     background-repeat: no-repeat;
@@ -17,6 +17,13 @@ body {
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+}
+
+/* Imagem em alta resolucao para telas maiores */
+@media (min-width: 769px) {
+    body {
+        background-image: url('fundo-desktop.webp');
+    }
 }
 
 /*
@@ -134,22 +141,37 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 4px;
     background-color: #fffaf0;
     border: 2px solid #e6d5b8;
+    padding: 10px;
     box-sizing: border-box;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.8rem;
     color: #3f3020;
     text-align: center;
-    line-height: 1.4;
     visibility: hidden; 
 }
 
-.prize-content span {
-    font-size: 2.2rem;
+.prize-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.prize-value {
+    font-size: 1.6rem;
     font-weight: 700;
     color: #d9534f;
-    margin-top: 10px;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.regras-validez {
+    font-size: 0.8rem;
+    margin-top: 2px;
+    line-height: 1.1;
+    opacity: 0.85;
 }
 
 #scratch-canvas {
@@ -307,52 +329,8 @@ body {
     .scratch-wrapper {
         padding-top: 50%; 
     }
-    
-    .prize-content {
-        font-size: 1.5rem; 
-        line-height: 1.3;
-    }
-
-    .prize-content span {
-        font-size: 1.8rem; 
-    }
-}
-/* Centralização e controle exato de espaçamento */
-.prize-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px; /* Controla o espaço entre as linhas */
-    text-align: center;
-    height: 100%;
-    padding: 10px;
-    box-sizing: border-box;
 }
 
-/* Título */
-.prize-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin: 0;
-    line-height: 1.2;
-}
-
-/* Valor do Desconto */
-.prize-value {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.1;
-}
-
-/* Regra de Validade (colada abaixo do valor) */
-.regras-validez {
-    font-size: 0.8rem;
-    margin-top: 2px; /* Reduz a distância do valor acima */
-    line-height: 1.1;
-    opacity: 0.85;
-}
 @media (max-width: 480px) {
 
     .prize-content {
@@ -361,7 +339,7 @@ body {
         justify-content: center !important;
         align-items: center !important;
         gap: 4px !important;
-        padding: 6px 4px !important; /* Reduzido levemente o padding lateral para dar mais espaço */
+        padding: 6px 4px !important;
         height: 100% !important;
         width: 100% !important;
         box-sizing: border-box !important;
@@ -378,8 +356,8 @@ body {
 
     /* Valor do Desconto ("(R$ XX DE DESCONTO)") */
     .prize-value {
-        font-size: clamp(1.2rem, 5.8vw, 1.7rem) !important; /* Ajustado para caber os parênteses sem cortar */
-        letter-spacing: -0.5px !important; /* Aproxima levemente as letras para garantir o encaixe */
+        font-size: clamp(1.2rem, 5.8vw, 1.7rem) !important;
+        letter-spacing: -0.5px !important;
         line-height: 1 !important;
         font-weight: 900 !important;
         margin: 0 !important;
