@@ -7,19 +7,15 @@
     
     <meta name="description" content="Raspe e ganhe um cupom de desconto exclusivo para a sua próxima tattoo!">
     
-    <!-- Conexão antecipada com os servidores do Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Fontes Google com &display=swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Preload da Imagem de Fundo (Carrega apenas a versão certa de acordo com a tela) -->
+    <!-- Preload da Imagem de Fundo -->
     <link rel="preload" as="image" href="fundo-mobile.webp" type="image/webp" media="(max-width: 768px)">
     <link rel="preload" as="image" href="fundo-desktop.webp" type="image/webp" media="(min-width: 769px)">
 
-    <!-- Estilo CSS -->
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS Inlined (Cole todo o conteúdo do seu style.css aqui dentro) -->
+    <style>
+      /* COLE O CONTEÚDO DO SEU STYLE.CSS AQUI */
+    </style>
+
     <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
@@ -41,15 +37,15 @@
             Utilize este cupom de desconto na sua próxima tattoo!
         </p>
 
-      <!-- Área da raspadinha -->
-<div class="scratch-wrapper">
-    <div class="prize-content">
-        <span class="prize-title">🎉 Parabéns! 🎉</span>
-        <span id="valor-premio" class="prize-value">(R$ 50 DE DESCONTO)</span>
-        <span class="regras-validez">(Válido para projetos a partir de <strong id="valor-minimo">R$ 500,00</strong>)</span>
-    </div>
-    <canvas id="scratch-canvas"></canvas>
-</div>
+        <!-- Área da raspadinha -->
+        <div class="scratch-wrapper">
+            <div class="prize-content">
+                <span class="prize-title">🎉 Parabéns! 🎉</span>
+                <span id="valor-premio" class="prize-value">(R$ 50 DE DESCONTO)</span>
+                <span class="regras-validez">(Válido para projetos a partir de <strong id="valor-minimo">R$ 500,00</strong>)</span>
+            </div>
+            <canvas id="scratch-canvas"></canvas>
+        </div>
 
         <!-- Link para WhatsApp -->
         <div class="link-info">
@@ -66,8 +62,8 @@
     <audio id="som-raspar" src="som-raspar.mp3" preload="auto" loop></audio>
     <audio id="som-confete" src="confeteestouro.wav" preload="auto"></audio>
 
-    <!-- Scripts externos e principais -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Scripts com defer para não travar a renderização inicial -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
     <script src="raspadinha.js" defer></script>
 </body>
 </html>
