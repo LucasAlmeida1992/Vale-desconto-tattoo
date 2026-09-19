@@ -239,10 +239,11 @@ canvas.addEventListener('touchcancel', () => { isDrawing = false; stopSound(); l
 // =============================
 const urlParams = new URLSearchParams(window.location.search);
 const valorParam = urlParams.get('valor');
+const pctParam = urlParams.get('p') || urlParams.get('pct'); // Aceita ?p=10 ou ?pct=10
 const genero = urlParams.get('genero');
 
-// SE NÃO HOUVER O PARÂMETRO "VALOR" NA URL, BLOQUEIA A TELA
-if (!valorParam) {
+// SE NÃO HOUVER NENHUM PARÂMETRO VÁLIDO NA URL, BLOQUEIA A TELA
+if (!valorParam && !pctParam) {
     document.body.innerHTML = `
         <div style="
             display: flex; 
@@ -262,24 +263,33 @@ if (!valorParam) {
             </p>
         </div>
     `;
-    throw new Error("Acesso negado: parâmetro 'valor' ausente.");
+    throw new Error("Acesso negado: parâmetro de valor ou porcentagem ausente.");
 }
 
 const valorPremioElement = document.getElementById('valor-premio');
 const valorMinimoElement = document.getElementById('valor-minimo');
 const elementosRegras = document.querySelectorAll('.regras-validez');
 
-// SE FOR PORCENTAGEM (Ex: valor=10% ou valor=15%)
-if (valorParam.includes('%')) {
+// VERIFICA SE É PORCENTAGEM (Ex: ?p=10 ou ?pct=10 ou ?valor=10p ou ?valor=10%)
+let porcentagemValor = null;
+
+if (pctParam) {
+    porcentagemValor = pctParam.replace('%', '');
+} else if (valorParam && (valorParam.toLowerCase().includes('p') || valorParam.includes('%'))) {
+    porcentagemValor = valorParam.toLowerCase().replace('pct', '').replace('p', '').replace('%', '');
+}
+
+if (porcentagemValor) {
     if (valorPremioElement) {
-        valorPremioElement.textContent = `(${valorParam} DE DESCONTO)`;
+        valorPremioElement.textContent = `(${porcentagemValor}% DE DESCONTO)`;
     }
+    // Oculta as regras de valor mínimo quando for porcentagem
     elementosRegras.forEach(el => el.style.display = 'none');
 } 
-// SE FOR VALOR EM REAIS (Ex: valor=500)
+// SE FOR VALOR EM REAIS (Ex: ?valor=500)
 else {
     const valorTattoo = parseFloat(valorParam);
-    const percentualDesconto = 0.08; // Alterado para 8%
+    const percentualDesconto = 0.08; // 8%
     const valorDesconto = Math.round(valorTattoo * percentualDesconto);
     const valorMinimo = valorTattoo;
 
@@ -291,6 +301,7 @@ else {
         valorMinimoElement.textContent = `R$ ${valorMinimo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
     }
 
+    // Garante que a regra continuará visível
     elementosRegras.forEach(el => el.style.display = 'block');
 }
 
